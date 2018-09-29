@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.reviewer.urls'), namespace="index"),
-    url(r'^reviewer/', include('apps.reviewer.urls', namespace="index")),
+    url(r'^', include('apps.books.urls', namespace="index")),
+    url(r'^books/', include('apps.books.urls', namespace="books")),
+    url(r'^users/', include('apps.users.urls', namespace="users")),
 ]
