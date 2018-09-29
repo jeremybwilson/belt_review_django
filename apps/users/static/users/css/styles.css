@@ -1,0 +1,32 @@
+.wrapper {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: .75em;
+    padding: 15px;
+    width: 1000px;
+}
+
+.redtext, .errors, .messages {
+    color: red;
+}
+
+.header_contents {
+    text-align: right;
+}
+
+.header_contents a {
+    margin: 0px 10px;
+}
+
+.label {
+    display: inline-block;
+    width: 200px;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.review_book_list_part {
+    margin: 50px 0px 0px 0px;
+}

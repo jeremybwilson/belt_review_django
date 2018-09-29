@@ -1,0 +1,30 @@
+.wrapper {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: .75em;
+    padding: 15px;
+    width: 1000px;
+}
+
+.header_contents {
+    padding: 0px 10px;
+    text-align: right;
+}
+
+.header_contents a {
+    margin: 0px 30px;
+}
+
+.add_book_and_review_part {
+    padding: 0px 30px;
+}
+
+.add_book_and_review_part form{
+    padding: 30px;
+}
+
+div label {
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}

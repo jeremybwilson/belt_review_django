@@ -1,0 +1,40 @@
+{% extends './layout.html' %}
+{% block title %}Users Index{% endblock %}
+{% block head %}
+<!-- {% load static %} -->
+<!-- <script src="{% static '/users/js/show.js' %}"></script> -->
+{% endblock %}
+
+{% block body %}
+        <div class="row">
+            <div class="wrapper">
+                <div class="header_contents">
+                    <a class="btn btn-link inline_box" href="/books">Home</a>
+                    <a class="btn btn-link inline_box" href="/books/add">Add Book and Review</a>
+                    {% if request.session.logged_in != False %}
+                    <a class="btn btn-link inline_box" href="{% url 'users:logout' %}">Logout</a>
+                    {% else %}
+                    <a class="btn btn-link inline_box" href="{% url 'users:login' %}">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="user_info_part">
+                    <p><span class="label strong">User Alias:</span> {{ user.alias }}</p>
+                    <p><span class="label strong">Name :</span> {{ user.name }}</p>
+                    <p><span class="label strong">Email :</span> {{ user.email }}</p>
+                    <p><span class="label strong">Total Reviews :</span> {{ total_review }}</p>
+                </div>
+                <div class="review_book_list_part">
+                    {% if reviews %}
+                    <p class="strong">Posted Reviews on the following books:</p>
+                        {% for review in reviews %}
+                        <p><a href="/books/{{ review.book.id }}">{{ review.book.name }}</a></p>
+                        {% endfor %}
+                    {% else %}
+                        <h3>User has not yet posted any reviews.</h3>
+                    {% endif %}
+                </div>
+            </div><!-- ./end wrapper -->
+        </div><!-- ./end row -->
+{% endblock %}

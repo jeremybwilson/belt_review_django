@@ -1,0 +1,74 @@
+{% extends './layout.html' %}
+{% block title %}Books Home{% endblock %}
+{% block head %}
+<!-- {% load static %} -->
+<!-- <script src="{% static '/books/js/show.js' %}"></script> -->
+{% endblock %}
+
+{% block body %}
+        <div class="row">
+            <div class="wrapper">
+                <h1>Welcome!</h1>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <div class="col-6 register_part">
+                    <h2>Register</h2>
+                    <form action="{% url 'users:register' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="name_row">
+                                <label for="name">Name:</label>
+                                <input class="form-control" type="text" name="name">
+                            </div>
+                            <div class="alias_row">
+                                <label for="alias">Alias:</label>
+                                <input class="form-control" type="text" name="alias">
+                            </div>
+                            <div class="email_row">
+                                <label for="email">Email:</label>
+                                <input class="form-control" type="text" name="email">
+                            </div>
+                            <div class="password_row">
+                                <label for="password">Password:</label>
+                                <input class="form-control" type="password" name="password">
+                                <span>*Password should be at least 8 characters</span>
+                            </div>
+                            <div class="confirm_password">
+                                <label for="confirm_password">Confirm Password:</label>
+                                <input class="form-control" type="password" name="confirm_password">
+                            </div>
+                            <div class="register_button">
+                            <button class="btn btn-primary btn-sm" type="submit" name="submit" value="Register">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6 login_part">
+                    <h2>Login</h2>
+                    <form action="{% url 'users:login' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="login_email">
+                                <label for="email">Email:</label>
+                                <input class="form-control" type="text" name="email">
+                            </div>
+                            <div class="login_password">
+                                <label for="password">Password:</label>
+                                <input class="form-control" type="password" name="password">
+                            </div>
+                            <div class="login_button">
+                                <button class="btn btn-primary btn-sm" type="submit" name="submit" value="Login">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- ./end wrapper -->
+        </div><!-- ./end row -->
+{% endblock %}

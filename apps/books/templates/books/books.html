@@ -1,0 +1,42 @@
+{% extends './layout.html' %}
+{% block title %}Books Home{% endblock %}
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/books/css/book.css' %}"> 
+{% endblock %}
+{% block body %}
+       <div class="row">
+            <div class="wrapper">
+                <div class="header_contents ">
+                    <p class="inline_box">Welcome,  {{ user_name }}</p>
+                    <a class="btn btn-link inline_box" href="{% url 'books:add' %}">Add Book and Review</a>
+                    {% if request.session.logged_in != False %}
+                    <a class="btn btn-link inline_box" href="{% url 'users:logout' %}">Logout</a>
+                    {% else %}
+                    <a class="btn btn-link inline_box" href="{% url 'users:login' %}">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="book_review_contents inline_box">
+                    <h4>Recent book reviews:</h4>
+                    {% for review in reviews %}
+                    <a href="/books/{{ review.book.id }}">
+                        <h2>{{ review.book.name }}</h2>
+                    </a>
+                    <p>Rating : {{ review.rating }}</p>
+                    <p><a href="/users/{{ review.user.id }}">{{ review.user.name }}</a> says : {{ review.review }}</p>
+                    <p>Posed on {{ review.created_at }}</p>
+                    {% endfor %}
+                </div>
+                <div class="other_book_with_review_contents inline_box">
+                    <h4>Other Books with Reviews:</h4>
+                    {% for book in books %}
+                    <a href="/books/{{ book.id }}">
+                        <p>{{book.name}}</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+{% endblock %}

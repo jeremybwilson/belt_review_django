@@ -1,0 +1,78 @@
+{% extends './layout.html' %}
+{% block title %}Users Index{% endblock %}
+{% block head %}
+<!-- {% load static %} -->
+<!-- <script src="{% static '/users/js/show.js' %}"></script> -->
+{% endblock %}
+
+{% block body %}
+        <div class="row">
+            <div class="wrapper">
+                <h1>Welcome!</h1>
+                <div class="col-6 register_part">
+                    <h2>Register</h2>
+                    <form action="{% url 'books:register' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="name_row">
+                                <label for="name">Name:</label>
+                                <input type="text" na>
+                            </div>
+                            <div class="alias_row">
+                                <label for="alias">Alias:</label>
+                                <input type="text" name="alias">
+                            </div>
+                            <div class="email_row">
+                                <label for="email">Email:</label>
+                                <input type="text" name="email">
+                            </div>
+                            <div class="password_row">
+                                <label for="password">Password:</label>
+                                <input type="password" name="password">
+                            </div>
+                            <div class="confirm_password">
+                                <label for="confirm_password">Confirm Password:</label>
+                                <input type="password" name="confirm_password">
+                            </div>
+                            <div class="register_button">
+                                <!-- <input type="submit" value="Register"> -->
+                            <button class="btn btn-primary btn-sm" type="submit" name="submit" value="Register">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6 login_part">
+                    <h2>Login</h2>
+                    <form action="{% url 'books:login' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="login_email">
+                                <label for="email">Email:</label>
+                                <input type="text" name="email">
+                            </div>
+                            <div class="login_password">
+                                <label for="password">Password:</label>
+                                <input type="password" name="password">
+                            </div>
+                            <div class="login_button">
+                                <!-- <input type="submit" value="Login"> -->
+                                <button class="btn btn-primary btn-sm" type="submit" name="submit" value="Login">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- ./end wrapper -->
+        </div><!-- ./end row -->
+        <div class="row">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <ol>
+                    <li class="errors">{{ message }}</li>
+                    <li class="errors">{{ message.tags }}</li>
+                </ol>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+{% endblock %}

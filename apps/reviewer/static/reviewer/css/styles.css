@@ -1,0 +1,20 @@
+.wrapper {
+    margin: 50px;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 1000px;
+}
+
+.redtext, .errors, .messages {
+    color: red;
+}
+
+div label{
+    display: inline-block;
+    width: 200px;
+}
+
+div {
+    margin: 10px 0px;
+}
